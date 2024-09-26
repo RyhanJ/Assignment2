@@ -1,0 +1,90 @@
+{
+    "name": "Australia",
+    "value": 5882.2,
+    "children": [
+      {
+        "name": "NSW",
+        "value": 1439.2,
+        "children": [
+          {"name": "Coal", "value": 525.4},
+          {"name": "Oil", "value": 619.2},
+          {"name": "Gas", "value": 134.3},
+          {"name": "Renewables", "value": 138.8},
+          {"name": "Statistical Discrepancy", "value": 21.5},
+          {"name": "Total", "value": 1439.2}
+        ]
+      },
+      {
+        "name": "VIC",
+        "value": 1172.6,
+        "children": [
+          {"name": "Coal", "value": 398.2},
+          {"name": "Oil", "value": 465.6},
+          {"name": "Gas", "value": 215.2},
+          {"name": "Renewables", "value": 111.8},
+          {"name": "Statistical Discrepancy", "value": -18.1},
+          {"name": "Total", "value": 1172.6}
+        ]
+      },
+      {
+        "name": "QLD",
+        "value": 1441.7,
+        "children": [
+          {"name": "Coal", "value": 471.1},
+          {"name": "Oil", "value": 532.6},
+          {"name": "Gas", "value": 290.5},
+          {"name": "Renewables", "value": 162.2},
+          {"name": "Statistical Discrepancy", "value": -14.7},
+          {"name": "Total", "value": 1441.7}
+        ]
+      },
+      {
+        "name": "WA",
+        "value": 1293.6,
+        "children": [
+          {"name": "Coal", "value": 99.4},
+          {"name": "Oil", "value": 447.1},
+          {"name": "Gas", "value": 704.8},
+          {"name": "Renewables", "value": 42.2},
+          {"name": "Statistical Discrepancy", "value": 0.0},
+          {"name": "Total", "value": 1293.6}
+        ]
+      },
+      {
+        "name": "SA",
+        "value": 300.0,
+        "children": [
+          {"name": "Coal", "value": 22.0},
+          {"name": "Oil", "value": 144.9},
+          {"name": "Gas", "value": 74.8},
+          {"name": "Renewables", "value": 53.0},
+          {"name": "Statistical Discrepancy", "value": 5.3},
+          {"name": "Total", "value": 300.0}
+        ]
+      },
+      {
+        "name": "TAS",
+        "value": 105.5,
+        "children": [
+          {"name": "Coal", "value": 8.8},
+          {"name": "Oil", "value": 39.5},
+          {"name": "Gas", "value": 7.2},
+          {"name": "Renewables", "value": 43.9},
+          {"name": "Statistical Discrepancy", "value": 6.0},
+          {"name": "Total", "value": 105.5}
+        ]
+      },
+      {
+        "name": "NT",
+        "value": 129.6,
+        "children": [
+          {"name": "Coal", "value": 0.0},
+          {"name": "Oil", "value": 36.6},
+          {"name": "Gas", "value": 91.3},
+          {"name": "Renewables", "value": 1.7},
+          {"name": "Statistical Discrepancy", "value": 0.0},
+          {"name": "Total", "value": 129.6}
+        ]
+      }
+    ]
+  }  
