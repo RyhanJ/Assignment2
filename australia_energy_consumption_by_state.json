@@ -1,0 +1,203 @@
+[
+    {
+      "id": 1,
+      "name": "Australia"
+    },
+    {
+      "id": 2,
+      "name": "NSW",
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "name": "Coal",
+      "parent": 2,
+      "size": 525.4
+    },
+    {
+      "id": 4,
+      "name": "Oil",
+      "parent": 2,
+      "size": 619.2
+    },
+    {
+      "id": 5,
+      "name": "Gas",
+      "parent": 2,
+      "size": 134.3
+    },
+    {
+      "id": 6,
+      "name": "Renewables",
+      "parent": 2,
+      "size": 138.8
+    },
+    {
+      "id": 7,
+      "name": "VIC",
+      "parent": 1
+    },
+    {
+      "id": 8,
+      "name": "Coal",
+      "parent": 7,
+      "size": 398.2
+    },
+    {
+      "id": 9,
+      "name": "Oil",
+      "parent": 7,
+      "size": 465.6
+    },
+    {
+      "id": 10,
+      "name": "Gas",
+      "parent": 7,
+      "size": 215.2
+    },
+    {
+      "id": 11,
+      "name": "Renewables",
+      "parent": 7,
+      "size": 111.8
+    },
+    {
+      "id": 12,
+      "name": "QLD",
+      "parent": 1
+    },
+    {
+      "id": 13,
+      "name": "Coal",
+      "parent": 12,
+      "size": 471.1
+    },
+    {
+      "id": 14,
+      "name": "Oil",
+      "parent": 12,
+      "size": 532.6
+    },
+    {
+      "id": 15,
+      "name": "Gas",
+      "parent": 12,
+      "size": 290.5
+    },
+    {
+      "id": 16,
+      "name": "Renewables",
+      "parent": 12,
+      "size": 162.2
+    },
+    {
+      "id": 17,
+      "name": "WA",
+      "parent": 1
+    },
+    {
+      "id": 18,
+      "name": "Coal",
+      "parent": 17,
+      "size": 99.4
+    },
+    {
+      "id": 19,
+      "name": "Oil",
+      "parent": 17,
+      "size": 447.1
+    },
+    {
+      "id": 20,
+      "name": "Gas",
+      "parent": 17,
+      "size": 704.8
+    },
+    {
+      "id": 21,
+      "name": "Renewables",
+      "parent": 17,
+      "size": 42.2
+    },
+    {
+      "id": 22,
+      "name": "SA",
+      "parent": 1
+    },
+    {
+      "id": 23,
+      "name": "Coal",
+      "parent": 22,
+      "size": 22.0
+    },
+    {
+      "id": 24,
+      "name": "Oil",
+      "parent": 22,
+      "size": 144.9
+    },
+    {
+      "id": 25,
+      "name": "Gas",
+      "parent": 22,
+      "size": 74.8
+    },
+    {
+      "id": 26,
+      "name": "Renewables",
+      "parent": 22,
+      "size": 53.0
+    },
+    {
+      "id": 27,
+      "name": "TAS",
+      "parent": 1
+    },
+    {
+      "id": 28,
+      "name": "Coal",
+      "parent": 27,
+      "size": 8.8
+    },
+    {
+      "id": 29,
+      "name": "Oil",
+      "parent": 27,
+      "size": 39.5
+    },
+    {
+      "id": 30,
+      "name": "Gas",
+      "parent": 27,
+      "size": 7.2
+    },
+    {
+      "id": 31,
+      "name": "Renewables",
+      "parent": 27,
+      "size": 43.9
+    },
+    {
+      "id": 32,
+      "name": "NT",
+      "parent": 1
+    },
+    {
+      "id": 33,
+      "name": "Oil",
+      "parent": 32,
+      "size": 36.6
+    },
+    {
+      "id": 34,
+      "name": "Gas",
+      "parent": 32,
+      "size": 91.3
+    },
+    {
+      "id": 35,
+      "name": "Renewables",
+      "parent": 32,
+      "size": 1.7
+    }
+  ]  
