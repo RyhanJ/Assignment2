@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Visualizations</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.21.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.2"></script>
+</head>
+<body>
+    <h1>Energy Visualizations in Australia</h1>
+    
+    <!-- First Visualization -->
+    <div id="vis"></div>
+
+    <!-- Second Visualization -->
+    <div id="vis2"></div>
+
+    <script type="text/javascript">
+        // First Visualization Spec (Per Capita Energy Consumption by State)
+        var spec1 = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "title": {
+                "text": "Per Capita Energy Consumption by Australian State in 2024",
+                "fontSize": 18,
+                "fontWeight": "bold",
+                "anchor": "start",
+                "color": "black"
+            },
+            "width": 600,
+            "height": 550,
+            "layer": [
+                {
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/RyhanJ/Week9Homework/refs/heads/main/au-states-topo.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "austates"
+                        }
+                    },
+                    "transform": [
+                        {
+                            "lookup": "id",
+                            "from": {
+                                "data": {
+                                    "url": "https://raw.githubusercontent.com/RyhanJ/Week9Homework/refs/heads/main/australian_energy_consumption_by_state.csv"
+                                },
+                                "key": "State_Code",
+                                "fields": ["Energy_Consumption", "Population", "State_Name"]
+                            }
+                        },
+                        {
+                            "calculate": "datum.Energy_Consumption / datum.Population",
+                            "as": "Per_Capita_Consumption"
+                        }
+                    ],
+                    "projection": {
+                        "type": "albers",
+                        "rotate": [-137, 0],
+                        "center": [0, -27.5],
+                        "parallels": [-18, -36],
+                        "scale": 800,
+                        "translate": [310, 280]
+                    },
+                    "mark": "geoshape",
+                    "encoding": {
+                        "color": {
+                            "field": "Per_Capita_Consumption",
+                            "type": "quantitative",
+                            "legend": {
+                                "orient": "right",
+                                "direction": "vertical",
+                                "gradientLength": 500,
+                                "title": "Per Capita Consumption (PJ)",
+                                "titleFontSize": 12,
+                                "labelFontSize": 10,
+                                "titleLimit": 200
+                            }
+                        }
+                    }
+                },
+                {
+                    "data": {
+                        "graticule": true
+                    },
+                    "mark": {
+                        "type": "geoshape",
+                        "stroke": "lightgray",
+                        "strokeWidth": 0.5
+                    },
+                    "projection": {
+                        "type": "albers",
+                        "rotate": [-137, 0],
+                        "center": [0, -27.5],
+                        "parallels": [-18, -36],
+                        "scale": 800,
+                        "translate": [310, 280]
+                    }
+                }
+            ]
+        };
+        vegaEmbed('#vis', spec1).catch(console.error);
+
+        // Second Visualization Spec (Proportion of Fuel Production by Type)
+        var spec2 = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "title": {
+                "text": "Proportion of Fuel Production by Type in Australia (1983-2023)",
+                "fontSize": 16,
+                "fontWeight": "bold",
+                "anchor": "middle",
+                "dy": -10
+            },
+            "data": {
+                "url": "https://raw.githubusercontent.com/RyhanJ/Assignment2/refs/heads/main/normalisedstackedareachart.csv"
+            },
+            "width": 500,
+            "height": 300,
+            "params": [
+                {
+                    "name": "fuelTypeFilter",
+                    "bind": {
+                        "input": "select",
+                        "options": [
+                            null,
+                            "Black coal",
+                            "Brown coal",
+                            "Natural gas",
+                            "Oil and LPG",
+                            "Renewables"
+                        ],
+                        "labels": [
+                            "Show All",
+                            "Black coal",
+                            "Brown coal",
+                            "Natural gas",
+                            "Oil and LPG",
+                            "Renewables"
+                        ],
+                        "name": "Fuel Type: "
+                    }
+                }
+            ],
+            "layer": [
+                {
+                    "mark": {"type": "area", "tooltip": true},
+                    "encoding": {
+                        "x": {
+                            "timeUnit": "year",
+                            "field": "Year",
+                            "title": "Year",
+                            "axis": {"domain": false, "format": "%Y"}
+                        },
+                        "y": {
+                            "aggregate": "sum",
+                            "field": "Production",
+                            "title": "Production (PJ)",
+                            "stack": "normalize"
+                        },
+                        "color": {
+                            "field": "Fuel_Type",
+                            "title": "Fuel Type",
+                            "scale": {"scheme": "category20b"}
+                        },
+                        "opacity": {
+                            "condition": {
+                                "test": "datum.Fuel_Type == fuelTypeFilter || fuelTypeFilter == null",
+                                "value": 1
+                            },
+                            "value": 0.3
+                        },
+                        "tooltip": [
+                            {
+                                "field": "Fuel_Type",
+                                "type": "nominal",
+                                "title": "Fuel Type"
+                            },
+                            {
+                                "field": "Year",
+                                "type": "temporal",
+                                "title": "Year",
+                                "timeUnit": "year"
+                            },
+                            {
+                                "field": "Production",
+                                "type": "quantitative",
+                                "title": "Production (Petajoules)",
+                                "format": ",.2f"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "mark": {"type": "text", "color": "white"},
+                    "data": {
+                        "values": [
+                            {
+                                "x": 600,
+                                "y": 0.65,
+                                "text": [
+                                    "Despite a 170% increase in renewables energy production in 2023 vs 1983,", 
+                                    "the proportion of Australia's energy production that is renewable", 
+                                    "has remained stagnant over the period."
+                                ]
+                            }
+                        ]
+                    },
+                    "encoding": {
+                        "x": {"field": "x", "type": "quantitative", "scale": {"domain": [0, 1000]}, "title": "", "axis": null},
+                        "y": {"field": "y", "type": "quantitative", "title": ""},
+                        "text": {"field": "text", "type": "nominal"}
+                    }
+                },
+                {
+                    "mark": {"type": "rule", "color": "white", "size": 1.5},
+                    "data": {"values": [{"x1": 700, "y1": 0.5, "x2": 1000, "y2": 0.03}]},
+                    "encoding": {
+                        "x": {"field": "x1", "type": "quantitative", "title": "", "axis": null},
+                        "y": {"field": "y1", "type": "quantitative", "title": ""},
+                        "x2": {"field": "x2"},
+                        "y2": {"field": "y2"}
+                    }
+                }
+            ]
+        };
+        vegaEmbed('#vis2', spec2).catch(console.error);
+    </script>
+</body>
+</html>
